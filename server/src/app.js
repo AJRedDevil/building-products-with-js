@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
 // catch all unhandler errors
 app.use((err, req, res, next) => {
   console.error(err.stack);
+  console.log(next);
   res.status(500).send(err);
 });
 
