@@ -1,9 +1,16 @@
 // npm packages
 import express from 'express';
 import bodyParser from 'body-parser';
+import morgan from 'morgan';
+
+// our packages
+import logger from './util';
 
 // init app
 const app = express();
+
+// setup logging
+app.use(morgan('combined', {stream: logger.stream}));
 
 // add body parsing
 app.use(bodyParser.json()); // for parsing application/json
@@ -16,8 +23,8 @@ app.get('/', (req, res) => {
 
 // catch all unhandler errors
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  console.log(next);
+  logger.error(err.stack);
+  logger.log(next);
   res.status(500).send(err);
 });
 
