@@ -11,6 +11,14 @@
     "javascript",
     "experts"
   ],
-  "author": "AJRedDevil",
-  "license": "MIT"
+  "author": "AJRedDevil <ajan.shresh@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/AJRedDevil/building-products-with-js.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/AJRedDevil/building-products-with-js/issues"
+  },
+  "homepage": "https://gitlab.com/AJRedDevil/building-products-with-js"
 }
