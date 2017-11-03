@@ -19,3 +19,18 @@ test('GET /', (t) => {
       t.end();
     });
 });
+
+test('404 on nonexistant URL', (t) => {
+  request(app)
+    .get('/GETShouldFailOnRandomURL')
+    .expect(404)
+    .expect('Content-Type', /text\/html/)
+    .end((err, res) => {
+      const expectedBody = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /GETShouldFailOnRandomURL</pre>\n</body>\n</html>\n';
+      const actualBody = res.text;
+
+      t.error(err, 'No error');
+      t.equal(actualBody, expectedBody, 'Retrieve body');
+      t.end();
+    });
+});
