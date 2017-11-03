@@ -24,7 +24,6 @@ app.get('/', (req, res) => {
 // catch all unhandler errors
 app.use((err, req, res, next) => {
   logger.error(err.stack);
-  logger.log(next);
   res.status(500).send(err);
 });
 
