@@ -6,7 +6,7 @@ import logger from './util';
 app.listen(8080, 'localhost', function() {
   const host = this.address().address;
   const {port} = this.address();
-  logger.log(`Experts server is listening at http://${host}:${port}`);
+  logger.debug(`Experts server is listening at http://${host}:${port}`);
 });
 
 // output all uncaught exceptions
