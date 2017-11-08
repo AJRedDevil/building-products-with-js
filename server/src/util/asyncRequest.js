@@ -1,5 +1,7 @@
 import {logger} from './logger';
 
-export const asyncRequest = handler =>
+const asyncRequest = handler =>
   (req, res) =>
     handler(req, res).catch(e => logger.error('error diring request', e));
+
+export default asyncRequest;

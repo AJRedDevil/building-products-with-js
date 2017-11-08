@@ -1,13 +1,14 @@
 import {thinky, r} from './thinky';
 
-export const Question = thinky.createModel('Question',{
+const Question = thinky.createModel('Question', {
   text: thinky.type.string().required(),
   creationDate: thinky.type.date().default(r.now()),
   expirationDate: thinky.type.date().required(),
-  answers: thinky.type.array().schema(
-    thinky.type.object().schema({
+  answers: thinky.type.array()
+    .schema(thinky.type.object().schema({
       user: thinky.type.string().required(),
       answer: thinky.type.string().required(),
-    })
-  ),
+    })),
 });
+
+export default Question;

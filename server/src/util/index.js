@@ -1,3 +1,5 @@
+import hash from './hash';
+import asyncRequest from './asyncRequest';
+
 export {logger} from './logger';
-export {hash} from './hash';
-export {asyncRequest} from './asyncRequest'
+export {asyncRequest, hash};
