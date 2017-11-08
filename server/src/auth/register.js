@@ -8,7 +8,7 @@ export default (app) => {
     const {login, password, passwordRepeat} = req.body;
 
     if (password !== passwordRepeat) {
-      res.status(400).send({error: 'Passowrd do not match!'});
+      return res.status(400).send({error: 'Passowrd do not match!'});
     }
 
     const hashedPassword = hash(password);
@@ -19,7 +19,6 @@ export default (app) => {
     });
     await user.save();
 
-    res.sendStatus(201);
-
+    return res.sendStatus(201);
   }));
 };
