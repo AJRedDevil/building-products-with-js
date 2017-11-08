@@ -1,3 +1,3 @@
-import defaultLogger from './logger';
-
-export default defaultLogger;
+export {logger} from './logger';
+export {hash} from './hash';
+export {asyncRequest} from './asyncRequest'
