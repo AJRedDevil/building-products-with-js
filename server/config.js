@@ -7,4 +7,5 @@ export const db = {
 export const auth = {
   passwordSalt: 'UIqG34oNQDoT3BYKpJCVngv4wM2OihkaJaE@6zV!qf8C&RV&t2Gr2PquIV*CQZ7O',
   sessionSecret: 'rSshR4iClKnk0G45k@sBhx3!rbu0Z8lasGR38goRy8m!A#Yiuw#tEAP1OM2t@5Bi',
+  jwtSecret: 'hlQfxVALKFgx2Xtq7eK#iX3kkNhoA$f3f@04G4ci90yV&JVsWgAjba76H3fo&Kfr',
 };
