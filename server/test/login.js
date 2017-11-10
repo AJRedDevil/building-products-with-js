@@ -24,6 +24,7 @@ export default(test) => {
         delete decodedUser.iat;
 
         t.equal(actualBody.user.login, 'test', 'Login matches request');
+        t.notOk(actualBody.password, 'No password included');
         t.deepEqual(actualBody.user, decodedUser, 'User must match token');
 
         app.set('token', actualBody.token);
@@ -43,7 +44,7 @@ export default(test) => {
         t.end();
       });
   });
-  
+
   test('Should fail to login with non-existent user', (t) => {
     request(app)
       .post('/api/login')

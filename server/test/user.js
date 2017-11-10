@@ -13,10 +13,11 @@ export default (test) => {
       .expect('Content-Type', /json/)
       .end((err, res) => {
         const expectedBody = app.get('user');
-        const acutalBody = res.body;
+        const actualBody = res.body;
 
         t.error(err, 'No error');
-        t.deepEqual(acutalBody, expectedBody, 'Retrieve user');
+        t.deepEqual(actualBody, expectedBody, 'Retrieve user');
+        t.notOk(actualBody.password, 'No password included');
         t.end();
       });
   });
@@ -29,10 +30,11 @@ export default (test) => {
       .expect('Content-Type', /json/)
       .end((err, res) => {
         const expectedBody = app.get('user');
-        const acutalBody = res.body;
+        const actualBody = res.body;
 
         t.error(err, 'No error');
-        t.deepEqual(acutalBody, expectedBody, 'Retrieve user');
+        t.deepEqual(actualBody, expectedBody, 'Retrieve user');
+        t.notOk(actualBody.password, 'No password included');
         t.end();
       });
   });
@@ -45,10 +47,10 @@ export default (test) => {
       .expect('Content-Type', /json/)
       .end((err, res) => {
         const expectedBody = {error: 'User does not exist'};
-        const acutalBody = res.body;
+        const actualBody = res.body;
 
         t.error(err, 'No error');
-        t.deepEqual(acutalBody, expectedBody, 'Get correct error');
+        t.deepEqual(actualBody, expectedBody, 'Get correct error');
         t.end();
       });
   });
