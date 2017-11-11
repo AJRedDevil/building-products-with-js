@@ -22,18 +22,14 @@ export default (app) => {
     }
 
     // save new question
-    try {
-      const question = new Question({
-        text,
-        expirationDate: moment(expirationDate).toDate(),
-        owner: req.user.id,
-      });
-      await question.save();
+    const question = new Question({
+      text,
+      expirationDate: moment(expirationDate).toDate(),
+      owner: req.user.id,
+    });
+    await question.save();
 
-      // send created question back
-      return res.send(question);
-    } catch (e) {
-      return res.status(400).send({error: e.toString()});
-    }
+    // send created question back
+    return res.send(question);
   }));
 };
