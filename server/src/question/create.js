@@ -17,7 +17,7 @@ export default (app) => {
     }
 
     // validate date
-    if (!moment(expirationDate).isValid()) {
+    if (!moment(expirationDate, moment.ISO_8601).isValid()) {
       return res.status(400).send({error: 'Date should be valid ISO Date!'});
     }
 
@@ -25,7 +25,7 @@ export default (app) => {
     try {
       const question = new Question({
         text,
-        expirationDate,
+        expirationDate: moment(expirationDate).toDate(),
         owner: req.user.id,
       });
       await question.save();
