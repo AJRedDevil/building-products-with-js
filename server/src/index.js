@@ -7,7 +7,7 @@ import {thinky} from './db';
 thinky.dbReady().then(() => {
   logger.info('Database ready, starting server...');
   // start server
-  app.listen(8080, 'localhost', function() {
+  app.listen(8080, function() {
     const host = this.address().address;
     const {port} = this.address();
     logger.debug(`Experts server is listening at http://${host}:${port}`);
