@@ -4,13 +4,11 @@
   "description": "Experts REST backend",
   "main": "index.js",
   "scripts": {
-    "start": "node lib/index.js",
-    "debug": "node index.js",
+    "start": "node index.js",
     "db:start": "node util/db/start",
     "db:stop": "docker stop expertsdb",
     "db:rm": "docker rm expertsdb",
-    "test": "eslint src/ && node test/index.js | tap-spec",
-    "postinstall": "babel src --out-dir lib"
+    "test": "eslint src/ && node test/index.js | tap-spec"
   },
   "keywords": [
     "rest",
