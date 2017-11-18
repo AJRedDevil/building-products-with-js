@@ -11,7 +11,7 @@
         "max-len": ["error", 120, 4],
         "no-unused-vars": ["error", {"argsIgnorePattern": "next"}],
         "import/prefer-default-export": "off",
-        "import/no-extraneous-dependencies": "off",
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
         "react/jsx-filename-extension": "off"
     }
 }
