@@ -19,17 +19,16 @@ let dbImage = false;
 // runs when command writes to stdout
 start.stdout.on('data', (data) => {
   if (data) {
-      console.log('Successfullt created expertsdb\n');
-        }
-        });
+    console.log('Successfully created expertsdb\n');
+  }
+});
 
-        // runs when command
-        start.stderr.on('data', (data) => {
-          if (data === "Unable to find image 'rethinkdb:latest' locally\n" || dbImage) {
-              console.log(data);
-                  dbImage = true;
-                    } else {
-                        console.log('Error while creating expertsdb:', data);
-                          }
-                          });
-
+// runs when command
+start.stderr.on('data', (data) => {
+  if (data === "Unable to find image 'rethinkdb:latest' locally\n" || dbImage) {
+    console.log(data);
+    dbImage = true;
+  } else {
+    console.log('Error while creating expertsdb:', data);
+  }
+});
