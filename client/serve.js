@@ -10,6 +10,10 @@ const config = require('./webpack.config');
 // create express
 const app = express();
 
+// define plugin for nod env
+config.plugins.push(new webpack.DefinePlugin({
+  'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV)},
+}));
 // setup hot reload
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 // setup no errors plugin
