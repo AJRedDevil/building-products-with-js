@@ -20,15 +20,15 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style',
-          'css?modules',
+          'style-loader',
+          'css-loader?modules',
         ],
         exclude: /node_modules/,
       }, {
         test: /node_modules\/.+\.css$/,
         use: [
-          'style',
-          'css',
+          'style-loader',
+          'css-loader',
         ],
       }, {
         test: /\.js$/,
@@ -56,22 +56,22 @@ module.exports = {
         loader: 'json',
       }, {
         test: /\.woff\d?(\?.+)?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff',
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
       }, {
         test: /\.ttf(\?.+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream',
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
       }, {
         test: /\.eot(\?.+)?$/,
-        loader: 'url?limit=10000',
+        loader: 'url-loader?limit=10000',
       }, {
         test: /\.svg(\?.+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml',
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
       }, {
         test: /\.png$/,
-        loader: 'url?limit=10000&mimetype=image/png',
+        loader: 'url-loader?limit=10000&mimetype=image/png',
       }, {
         test: /\.gif$/,
-        loader: 'url?limit=10000&mimetype=image/gif',
+        loader: 'url-loader?limit=10000&mimetype=image/gif',
       },
     ],
   },
