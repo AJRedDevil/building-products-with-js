@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {helloWorldAction} from '../store/action';
+import {helloWorldAction} from '../store/actions';
 
 const mapStateToProps = state => ({
   world: state.helloWorld.world,
