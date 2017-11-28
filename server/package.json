@@ -39,8 +39,8 @@
     "eslint-plugin-react": "^7.5.0",
     "reqlite": "^2.3.0",
     "supertest": "^3.0.0",
-    "tape": "^4.8.0",
-    "tap-spec": "^4.1.1"
+    "tap-spec": "^4.1.1",
+    "tape": "^4.8.0"
   },
   "babel": {
     "presets": [
@@ -51,6 +51,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "jsonwebtoken": "^8.1.0",
