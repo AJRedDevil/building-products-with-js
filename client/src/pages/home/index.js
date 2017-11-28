@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
-import {helloWorldAction} from '../store/actions';
+import {helloWorldAction} from '../../store/actions';
 
 const mapStateToProps = state => ({
   world: state.helloWorld.world,

@@ -10,14 +10,17 @@ import {createBrowserHistory} from 'history';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // our packages
-import store from './store';
+import configureStore from './store';
+import {PrivateRoute} from './util';
 
 // our pages
-import Home from './home';
-import Other from './other';
-import NotFound from './notfound';
+import Home from './pages/home';
+import Login from './pages/login';
+import Register from './pages/register';
+import NotFound from './pages/notfound';
 
 const history = createBrowserHistory();
+const store = configureStore(history);
 
 // render on page
 ReactDOM.render(
@@ -26,8 +29,9 @@ ReactDOM.render(
       <ConnectedRouter history={history}>
         <div className="container">
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/other" component={Other} />
+            <PrivateRoute exact path="/" component={Home} loggedIn={store.getState().auth.token !== null} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
             <Route component={NotFound} />
           </Switch>
         </div>
