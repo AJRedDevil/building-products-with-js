@@ -4,7 +4,7 @@ import * as ActionTypes from '../actionTypes';
 
 const initalState = {
   token: localStorage.getItem('user.token'),
-  user: localStorage.getItem('user.token'),
+  user: JSON.parse(localStorage.getItem('user.token')),
 };
 
 export const auth = (state = initalState, action) => {
@@ -15,7 +15,7 @@ export const auth = (state = initalState, action) => {
       };
     case ActionTypes.LOGIN_SUCCESS:
       localStorage.setItem('user.token', action.payload.token);
-      localStorage.setItem('user.data', action.payload.user);
+      localStorage.setItem('user.data', JSON.stringify(action.payload.user));
       return {
         ...action.payload,
       };
