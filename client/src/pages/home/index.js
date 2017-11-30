@@ -1,33 +1,68 @@
+// npm packages
 import React from 'react';
+import _ from 'lodash';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {helloWorldAction} from '../../store/actions';
+// our packages
+import {getAllQuestions, answerQuestion} from '../../store/actions';
+import Question from '../../components/question';
+import {QuestionPropType} from '../../util';
 
 const mapStateToProps = state => ({
-  world: state.helloWorld.world,
+  questions: state.questions.questions,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClick: () => dispatch(helloWorldAction()),
+  fetchQuestions: _.once(() => dispatch(getAllQuestions())),
+  doAnswer: payload => dispatch(answerQuestion(payload)),
 });
 
-const Home = ({onClick, world}) => (
-  <div className="jumbotron">
-    <h1>Hello, {world}!</h1>
-    <button className="btn btn-default" onClick={onClick}>Click me!</button>
+const Home = ({fetchQuestions, doAnswer, questions}) => {
+  fetchQuestions();
+
+  return (
     <div>
-      <Link to="/other">other</Link>
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <Link to="/" className="navbar-brand">Brand</Link>
+          </div>
+
+          <ul className="nav navbar-nav">
+            <li>
+              <Link to="/">Browse questions</Link>
+            </li>
+            <li>
+              <Link to="/create">Create new questions</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div>
+        {questions.map(question => (
+          <Question key={question.id} question={question} onAnswer={doAnswer} />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 Home.propTypes = {
-  world: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  questions: PropTypes.arrayOf(QuestionPropType),
+  fetchQuestions: PropTypes.func.isRequired,
+  doAnswer: PropTypes.func.isRequired,
 };
 Home.defaultProps = {
-  world: '',
+  questions: [{
+    answers: [],
+    creationDate: '',
+    expirationDate: '',
+    id: '',
+    owner: '',
+    text: '',
+  }],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
