@@ -32,7 +32,7 @@ const Home = ({fetchQuestions, doAnswer, questions}) => {
 
           <ul className="nav navbar-nav">
             <li>
-              <Link to="/">Browse questions</Link>
+              <Link to="/"><b>Browse questions</b></Link>
             </li>
             <li>
               <Link to="/create">Create new questions</Link>

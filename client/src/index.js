@@ -15,6 +15,7 @@ import {PrivateRoute} from './util';
 
 // our pages
 import Home from './pages/home';
+import Create from './pages/create';
 import Login from './pages/login';
 import Register from './pages/register';
 import NotFound from './pages/notfound';
@@ -29,7 +30,8 @@ ReactDOM.render(
       <ConnectedRouter history={history}>
         <div className="container">
           <Switch>
-            <PrivateRoute exact path="/" component={Home} loggedIn={store.getState().auth.token !== null} />
+            <PrivateRoute exact path="/" component={Home} />
+            <PrivateRoute path="/create" component={Create} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route component={NotFound} />
