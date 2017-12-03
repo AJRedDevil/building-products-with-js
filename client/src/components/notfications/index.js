@@ -6,7 +6,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 // our packages
 import Notification from './notification';
-import {NotificationPropType, NotificationDefaultProp} from '../../util';
+import {MyPropType} from '../../util';
 import transitions from './transitions.css';
 
 const mapStateToProps = state => ({
@@ -29,10 +29,10 @@ const Notifications = ({notifications}) => (
   </div>
 );
 Notifications.propTypes = {
-  notifications: PropTypes.arrayOf(NotificationPropType),
+  notifications: PropTypes.arrayOf(MyPropType.NotificationPropType),
 };
 Notifications.defaultProps = {
-  notifications: [NotificationDefaultProp],
+  notifications: [MyPropType.NotificationDefaultProp],
 };
 
 export default connect(mapStateToProps)(Notifications);

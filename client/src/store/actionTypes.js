@@ -21,3 +21,7 @@ export const CREATE_QUESTION_ERROR = 'CREATE_QUESTION_ERROR';
 // notification actions
 export const ADD_NOTIFICATION = 'ADD_NOTIFICATION';
 export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
+// user actions
+export const GET_USER = 'GET_USER';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_ERROR = 'GET_USER_ERROR';

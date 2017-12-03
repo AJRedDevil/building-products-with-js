@@ -1,21 +1,23 @@
 // npm packages
 import React from 'react';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import moment from 'moment';
 
 // our packages
 import {createQuestion} from '../../store/actions';
+import Navbar from '../../components/navbar';
+import {MyPropType} from '../../util';
 
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = dispatch => ({
   doCreateQuestion: payload => dispatch(createQuestion(payload)),
 });
 
-const Create = ({doCreateQuestion}) => {
+const Create = ({doCreateQuestion, user}) => {
   let questionText;
   let questionDate;
 
@@ -31,22 +33,7 @@ const Create = ({doCreateQuestion}) => {
 
   return (
     <div>
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <Link to="/" className="navbar-brand">Brand</Link>
-          </div>
-
-          <ul className="nav navbar-nav">
-            <li>
-              <Link to="/">Browse questions</Link>
-            </li>
-            <li>
-              <Link to="/create"><b>Create new questions</b></Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar user={user} current="/create" />
 
       <div>
         <form>
@@ -80,6 +67,7 @@ const Create = ({doCreateQuestion}) => {
 };
 Create.propTypes = {
   doCreateQuestion: PropTypes.func.isRequired,
+  user: MyPropType.UserPropType.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Create);

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const QuestionPropType = PropTypes.shape({
+const QuestionPropType = PropTypes.shape({
   answers: PropTypes.array,
   creationDate: PropTypes.string,
   expirationDate: PropTypes.string,
@@ -9,14 +9,44 @@ export const QuestionPropType = PropTypes.shape({
   text: PropTypes.string,
 });
 
-export const NotificationPropType = PropTypes.shape({
+const QuestionDefaultProp = {
+  answers: [],
+  creationDate: '',
+  expirationDate: '',
+  id: '',
+  owner: '',
+  text: '',
+};
+
+const NotificationPropType = PropTypes.shape({
   id: PropTypes.number,
   alertType: PropTypes.string,
   text: PropTypes.string,
 });
 
-export const NotificationDefaultProp = {
+const NotificationDefaultProp = {
   id: 0,
   alertType: '',
   text: '',
+};
+
+const UserPropType = PropTypes.shape({
+  id: PropTypes.String,
+  login: PropTypes.String,
+  registrationDate: PropTypes.string,
+});
+
+const UserDefaultProp = {
+  id: '',
+  login: '',
+  registrationDate: '',
+};
+
+export const MyPropType = {
+  QuestionPropType,
+  QuestionDefaultProp,
+  NotificationPropType,
+  NotificationDefaultProp,
+  UserPropType,
+  UserDefaultProp,
 };

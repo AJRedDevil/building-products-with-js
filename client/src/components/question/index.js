@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import uuid from 'uuid';
 
 // our packages
-import {QuestionPropType} from '../../util';
+import {MyPropType} from '../../util';
 
 const Question = ({question, onAnswer}) => {
   let answerInput;
@@ -46,11 +46,11 @@ const Question = ({question, onAnswer}) => {
   );
 };
 Question.propTypes = {
-  question: QuestionPropType,
+  question: MyPropType.QuestionPropType,
   onAnswer: PropTypes.func.isRequired,
 };
 Question.defaultProps = {
-  question: {},
+  question: MyPropType.QuestionDefaultProp,
 };
 
 export default Question;

@@ -19,6 +19,7 @@ import Home from './pages/home';
 import Create from './pages/create';
 import Login from './pages/login';
 import Register from './pages/register';
+import Profile from './pages/profile';
 import NotFound from './pages/notfound';
 
 const history = createBrowserHistory();
@@ -35,6 +36,7 @@ ReactDOM.render(
             <PrivateRoute path="/create" component={Create} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <PrivateRoute path="/profile/:id" component={Profile} />
             <Route component={NotFound} />
           </Switch>
         </App>

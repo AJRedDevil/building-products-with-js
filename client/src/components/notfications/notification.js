@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 // our packages
+import {MyPropType} from '../../util';
 import {removeNotification} from '../../store/actions';
-import {NotificationPropType, NotificationDefaultProp} from '../../util';
 
 const mapDispatchToProps = dispatch => ({
   onRemoveNotificationClick: notificationId =>
@@ -28,10 +28,11 @@ const Notification = ({onRemoveNotificationClick, notification}) => (
 );
 Notification.propTypes = {
   onRemoveNotificationClick: PropTypes.func.isRequired,
-  notification: NotificationPropType,
+  // eslint-disable-next-line react/no-typos
+  notification: MyPropType.NotificationPropType,
 };
 Notification.defaultProps = {
-  notification: NotificationDefaultProp,
+  notification: MyPropType.NotificationDefaultProp,
 };
 
 export default connect(null, mapDispatchToProps)(Notification);
