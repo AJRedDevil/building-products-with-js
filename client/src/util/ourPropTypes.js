@@ -8,3 +8,15 @@ export const QuestionPropType = PropTypes.shape({
   owner: PropTypes.string,
   text: PropTypes.string,
 });
+
+export const NotificationPropType = PropTypes.shape({
+  id: PropTypes.number,
+  alertType: PropTypes.string,
+  text: PropTypes.string,
+});
+
+export const NotificationDefaultProp = {
+  id: 0,
+  alertType: '',
+  text: '',
+};

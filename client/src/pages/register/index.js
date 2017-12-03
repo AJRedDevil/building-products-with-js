@@ -7,11 +7,9 @@ import {push} from 'react-router-redux';
 
 // our packages
 import {registerAction} from '../../store/actions';
-import {registerErrorToMessage} from '../../util';
 
 const mapStateToProps = state => ({
   redirectToLogin: state.auth.redirectToLogin,
-  error: state.auth.error,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -21,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
 
 
 const Register = ({
-  onRegisterClick, navToLogin, redirectToLogin, error,
+  onRegisterClick, navToLogin, redirectToLogin,
 }) => {
   let usernameInput;
   let passwordInput;
@@ -46,12 +44,6 @@ const Register = ({
     <div className="jumbotron">
       <h2>Experts portal:</h2>
       <p>Please register. Or <Link to="/login">login</Link></p>
-
-      {
-        error && Object.keys(error).length > 0 ? (
-          <div className="alert alert-danger" role="alert">{registerErrorToMessage(error)}</div>
-        ) : ''
-      }
 
       <form>
         <div className="form-group">
@@ -93,11 +85,9 @@ Register.propTypes = {
   onRegisterClick: PropTypes.func.isRequired,
   navToLogin: PropTypes.func.isRequired,
   redirectToLogin: PropTypes.bool,
-  error: PropTypes.shape({message: PropTypes.string}),
 };
 Register.defaultProps = {
   redirectToLogin: false,
-  error: {},
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

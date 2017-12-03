@@ -14,6 +14,7 @@ import configureStore from './store';
 import {PrivateRoute} from './util';
 
 // our pages
+import App from './app';
 import Home from './pages/home';
 import Create from './pages/create';
 import Login from './pages/login';
@@ -28,7 +29,7 @@ ReactDOM.render(
   (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <div className="container">
+        <App>
           <Switch>
             <PrivateRoute exact path="/" component={Home} />
             <PrivateRoute path="/create" component={Create} />
@@ -36,7 +37,7 @@ ReactDOM.render(
             <Route path="/register" component={Register} />
             <Route component={NotFound} />
           </Switch>
-        </div>
+        </App>
       </ConnectedRouter>
     </Provider>
   ), document.getElementById('app'),

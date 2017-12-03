@@ -1,6 +1,28 @@
+// npm packages
 import {Observable} from 'rxjs/Observable';
 
+// our packages
 import * as ActionTypes from '../actionTypes';
+import * as Actions from '../actions';
+import {loginErrorToMessage, registerErrorToMessage} from '../../util';
+
+// ASCII diagram for Rx streams (see: https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
+//
+// Success login:
+// --(DO_LOGIN|)
+//        switchMap(credentials => ajax)
+// -------------(token|)
+//        map
+// -------------(LOGIN_SUCCESS with token|)
+//        concat
+// -------------(ADD_NOTIFICATION with login success|)
+//
+// Failed login:
+// --(DO_LOGIN|)
+//         switchMap(credentials => ajax)
+// -------------(X|)
+//         catch
+// -------------(LOGIN_ERROR, ADD_NOTIFICATION with login error|)
 
 export const login = action$ => action$
   .ofType(ActionTypes.DO_LOGIN)
@@ -11,13 +33,24 @@ export const login = action$ => action$
       type: ActionTypes.LOGIN_SUCCESS,
       payload: response,
     }))
-    .catch(err => Observable.of({
-      type: ActionTypes.LOGIN_ERROR,
-      payload: {
-        error: err,
+    .concat(Observable.of(Actions.addNotification({
+      text: 'Login success',
+      alertType: 'info',
+    })))
+    .catch(err => Observable.of(
+      {
+        type: ActionTypes.LOGIN_ERROR,
+        payload: {
+          error: err,
+        },
       },
-    })));
+      Actions.addNotification({
+        text: loginErrorToMessage(err),
+        alertType: 'danger',
+      }),
+    )));
 
+// Similar to login
 export const register = action$ => action$
   .ofType(ActionTypes.DO_REGISTER)
   .switchMap(({payload}) => Observable
@@ -27,9 +60,19 @@ export const register = action$ => action$
       type: ActionTypes.REGISTER_SUCCESS,
       payload: response,
     }))
-    .catch(err => Observable.of({
-      type: ActionTypes.REGISTER_ERROR,
-      payload: {
-        error: err,
+    .concat(Observable.of(Actions.addNotification({
+      text: 'Register success',
+      alertType: 'info',
+    })))
+    .catch(err => Observable.of(
+      {
+        type: ActionTypes.REGISTER_ERROR,
+        payload: {
+          error: err,
+        },
       },
-    })));
+      Actions.addNotification({
+        text: registerErrorToMessage(err),
+        alertType: 'danger',
+      }),
+    )));

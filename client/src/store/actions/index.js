@@ -27,3 +27,28 @@ export const createQuestion = payload => ({
   type: ActionTypes.CREATE_QUESTION,
   payload,
 });
+
+let nextNotificationID = 0;
+
+/**
+ * Add a notification to the store.
+ * @param {String} text - text to display
+ * @param {String} alertType - Bootstrap alert style: success | info | warning | danger
+ */
+export const addNotification = ({text, alertType}) => ({
+  type: ActionTypes.ADD_NOTIFICATION,
+  payload: {
+    id: nextNotificationID++,
+    text,
+    alertType,
+  },
+});
+
+/**
+ * Remove a notification from the store.
+ * @param {String} notificationId
+ */
+export const removeNotification = notificationId => ({
+  type: ActionTypes.REMOVE_NOTIFICATION,
+  payload: {notificationId},
+});
