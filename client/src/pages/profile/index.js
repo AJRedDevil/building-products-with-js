@@ -30,11 +30,13 @@ class Profile extends Component {
 
   render() {
     const {user, match, loadedUser} = this.props;
+    const allowEdit = user && loadedUser && user.id === loadedUser.id;
+
     return (
       <div>
         <Navbar user={user} current={`/profile/${match.params.id}`} />
 
-        <User user={loadedUser} />
+        <User user={loadedUser} edit={allowEdit} />
       </div>
     );
   }

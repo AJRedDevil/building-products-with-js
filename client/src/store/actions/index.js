@@ -65,3 +65,8 @@ export const getUser = payload => ({
   type: ActionTypes.GET_USER,
   payload,
 });
+
+export const updateUser = payload => ({
+  type: ActionTypes.UPDATE_USER,
+  payload,
+});
