@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid';
+import {Link} from 'react-router-dom';
 
 // our packages
 import {MyPropType} from '../../util';
@@ -18,7 +19,13 @@ const Question = ({question, onAnswer}) => {
 
   return (
     <div className="panel panel-default">
-      <div className="panel-heading">{question.text}</div>
+      <div className="panel-heading">
+        {question.text}
+
+        <div className="pull-right">
+          <Link to={`/profile/${question.owner.id}`}>{question.owner.login}</Link>
+        </div>
+      </div>
       <div className="panel-body">
         {question.answers.length > 0 ? question.answers.map(answer => (
           <ul className="list-group" key={uuid.v4()}>
