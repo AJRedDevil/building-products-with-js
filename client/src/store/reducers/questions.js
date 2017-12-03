@@ -1,7 +1,4 @@
-import _ from 'lodash';
-
 import * as ActionTypes from '../actionTypes';
-
 
 const initalState = {questions: [], status: 'inited'};
 
@@ -28,21 +25,13 @@ export const questions = (state = initalState, action) => {
       };
     // answer questions logic
     case ActionTypes.ANSWER_QUESTION_SUCCESS: {
-      const index = state.questions.findIndex(q => q.id === action.payload.id);
-      return {
-        ...state,
-        questions: state.questions.map((question, i) => (i === index ? action.payload : question)),
-      };
+      const newQuestions = state.questions.map(q => (q.id === action.payload.id ? action.payload : q));
+      return {...state, questions: newQuestions};
     }
-    case ActionTypes.CREATE_QUESTION_SUCCESS:
-    // state.questions.push(action.payload);
-      return {
-        ...state,
-        questions: [
-          ...state.questions,
-          action.payload,
-        ],
-      };
+    case ActionTypes.CREATE_QUESTION_SUCCESS: {
+      const newQuestions = [...state.questions, action.payload];
+      return {...state, questions: newQuestions};
+    }
     default:
       return state;
   }
