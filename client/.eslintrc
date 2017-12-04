@@ -25,6 +25,6 @@
             "allowChildren": false
         }],
         "no-plusplus": "off",
-        "no-shadow": "off",
+        "no-shadow": "off"
     }
 }
