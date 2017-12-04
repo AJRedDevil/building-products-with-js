@@ -54,7 +54,7 @@ setupUserRoutes(app);
 // setup question routes
 setupQuestionRoutes(app);
 
-// catch all unhandler errors
+// catch all unhandled errors
 app.use((err, req, res, next) => {
   logger.error(err.stack);
   res.status(500).send(err);
