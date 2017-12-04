@@ -37,6 +37,11 @@ export const deleteQuestion = payload => ({
   payload,
 });
 
+export const updateQuestion = payload => ({
+  type: ActionTypes.UPDATE_QUESTION,
+  payload,
+});
+
 // notifications
 
 let nextNotificationID = 0;
