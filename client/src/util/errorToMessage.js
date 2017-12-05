@@ -14,3 +14,13 @@ export const registerErrorToMessage = (error) => {
   }
   return error.message;
 };
+
+export const ajaxErrorToMessage = (error) => {
+  if (error.xhr.response && error.xhr.response.error) {
+    return error.xhr.response.error;
+  }
+  if (error.status === 400) {
+    return 'Oops, something went wrong. Please, try again';
+  }
+  return error.message;
+};

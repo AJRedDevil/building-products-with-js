@@ -1,5 +1,7 @@
 import * as ActionTypes from '../actionTypes';
 
+let nextNotificationID = 0;
+
 export const helloWorldAction = () => ({
   type: ActionTypes.HELLO_WORLD,
 });
@@ -43,8 +45,6 @@ export const updateQuestion = payload => ({
 });
 
 // notifications
-
-let nextNotificationID = 0;
 
 /**
  * Add a notification to the store.
