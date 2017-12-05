@@ -21,7 +21,10 @@ export const questions = (state = initalState, action) => {
       return {...state, questions: newQuestions};
     }
     case ActionTypes.CREATE_QUESTION_SUCCESS: {
-      const newQuestions = [...state.questions, action.payload];
+      const newQuestions = [...state.questions, {
+        ...action.payload,
+        owner: JSON.parse(localStorage.getItem('user.data')),
+      }];
       return {...state, questions: newQuestions};
     }
     case ActionTypes.DELETE_QUESTION_SUCCESS: {
