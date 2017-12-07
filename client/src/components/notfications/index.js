@@ -2,12 +2,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 // our packages
 import Notification from './notification';
 import {MyPropType} from '../../util';
-import transitions from './transitions.css';
 
 const mapStateToProps = state => ({
   notifications: state.notifications,
@@ -15,17 +13,11 @@ const mapStateToProps = state => ({
 
 const Notifications = ({notifications}) => (
   <div>
-    <ReactCSSTransitionGroup
-      transitionName={transitions}
-      transitionEnterTimeout={700}
-      transitionLeaveTimeout={700}
-    >
-      {
-        notifications.map(notification => (
-          <Notification key={notification.id} notification={notification} />
-        ))
-      }
-    </ReactCSSTransitionGroup>
+    {
+      notifications.map(notification => (
+        <Notification key={notification.id} notification={notification} />
+      ))
+    }
   </div>
 );
 Notifications.propTypes = {
