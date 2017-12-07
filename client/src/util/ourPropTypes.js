@@ -42,7 +42,10 @@ const NotificationDefaultProp = {
   text: '',
 };
 
+const EmptyFuncDefaultProp = () => {}
+
 export const MyPropType = {
+  EmptyFuncDefaultProp,
   QuestionPropType,
   QuestionDefaultProp,
   NotificationPropType,

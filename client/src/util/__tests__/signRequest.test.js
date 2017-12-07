@@ -1,5 +1,3 @@
-/* global test, expect */
-
 import {signRequest} from '../signRequest';
 
 test('# signRequest', () => {

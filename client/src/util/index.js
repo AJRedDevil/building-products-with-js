@@ -5,3 +5,4 @@ export {
 } from './errorToMessage';
 export {signRequest} from './signRequest';
 export {MyPropType} from './ourPropTypes';
+export {convertStringToDate, convertDateToISOString} from './dateTypeConverter';

@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
   updateQuestion: payload => dispatch(updateQuestion(payload)),
 });
 
-class Question extends Component {
+export class Question extends Component {
   constructor(props) {
     super(props);
 
@@ -66,11 +66,11 @@ class Question extends Component {
         <div className="panel-heading">
           {user.id === question.owner.id && (
             <span>
-              <button className="btn btn-link" onClick={this.handleDeleteQuestionClick}>
+              <button className="btn btn-link" id="deleteBtn" onClick={this.handleDeleteQuestionClick}>
                 <span className="glyphicon glyphicon-trash" />
               </button>
               {editing ? '' : (
-                <button className="btn btn-link" onClick={this.toggleEdit}>
+                <button className="btn btn-link" id="editBtn" onClick={this.toggleEdit}>
                   <span className="glyphicon glyphicon-pencil" />
                 </button>
               )}
@@ -78,8 +78,13 @@ class Question extends Component {
           )}
           {editing ? (
             <span>
-              <input type="text" ref={(i) => { this.questionInput = i; }} defaultValue={question.text} />
-              <button className="btn btn-link" onClick={this.handleUpdateQuestionClick}>
+              <input
+                type="text"
+                id="questionInput"
+                ref={(i) => { this.questionInput = i; }}
+                defaultValue={question.text}
+              />
+              <button className="btn btn-link" id="updateBtn" onClick={this.handleUpdateQuestionClick}>
                 <span className="glyphicon glyphicon-ok" />
               </button>
               <button className="btn btn-link" onClick={this.toggleEdit}>
@@ -110,7 +115,7 @@ class Question extends Component {
                 ref={(i) => { this.answerInput = i; }}
               />
             </div>
-            <button type="submit" className="btn btn-default" onClick={this.handleAnswerClick}>
+            <button type="submit" id="answerBtn" className="btn btn-default" onClick={this.handleAnswerClick}>
               Answer
             </button>
           </form>
@@ -120,17 +125,20 @@ class Question extends Component {
   }
 }
 Question.propTypes = {
+  deleteQuestion: PropTypes.func,
   // eslint-disable-next-line react/no-typos
   question: MyPropType.QuestionPropType,
+  onAnswer: PropTypes.func,
   // eslint-disable-next-line react/no-typos
   user: MyPropType.UserPropType,
-  onAnswer: PropTypes.func.isRequired,
-  deleteQuestion: PropTypes.func.isRequired,
-  updateQuestion: PropTypes.func.isRequired,
+  updateQuestion: PropTypes.func,
 };
 Question.defaultProps = {
+  deleteQuestion: MyPropType.EmptyFuncDefaultProp,
   question: MyPropType.QuestionDefaultProp,
+  onAnswer: MyPropType.EmptyFuncDefaultProp,
   user: MyPropType.UserDefaultProp,
+  updateQuestion: MyPropType.EmptyFuncDefaultProp,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);

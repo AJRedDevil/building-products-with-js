@@ -50,8 +50,11 @@ const Navbar = ({user, current}) => (
 );
 Navbar.propTypes = {
   // eslint-disable-next-line react/no-typos
-  user: MyPropType.UserPropType.isRequired,
+  user: MyPropType.UserPropType,
   current: PropTypes.string.isRequired,
+};
+Navbar.defaultProps = {
+  user: MyPropType.UserDefaultProp,
 };
 
 export default Navbar;

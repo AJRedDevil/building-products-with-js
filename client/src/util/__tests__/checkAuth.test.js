@@ -1,7 +1,9 @@
-/* global test, expect */
-
 import {isAuthenticated} from '../checkAuth';
 
-test('# isAuthenticated', () => {
+test('# checkAuth', () => {
+  const token = 'test';
   expect(isAuthenticated()).toBeUndefined();
+
+  localStorage.setItem('user.token', token);
+  expect(isAuthenticated()).toBe(token);
 });

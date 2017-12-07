@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Navbar 1`] = `
+<nav
+  className="navbar navbar-default"
+>
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="navbar-header"
+    >
+      <Link
+        className="navbar-brand"
+        replace={false}
+        to="/"
+      >
+        Brand
+      </Link>
+    </div>
+    <ul
+      className="nav navbar-nav"
+    >
+      <li>
+        <Link
+          replace={false}
+          to="/"
+        >
+          <b>
+            Browse questions
+          </b>
+        </Link>
+      </li>
+      <li>
+        <Link
+          replace={false}
+          to="/create"
+        >
+          Create new questions
+        </Link>
+      </li>
+    </ul>
+    <ul
+      className="nav navbar-nav navbar-right"
+    >
+      <li>
+        <Link
+          replace={false}
+          to="/profile/me"
+        >
+          Logged in as ""
+        </Link>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`# Navbar 2`] = `
+<nav
+  className="navbar navbar-default"
+>
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="navbar-header"
+    >
+      <Link
+        className="navbar-brand"
+        replace={false}
+        to="/"
+      >
+        Brand
+      </Link>
+    </div>
+    <ul
+      className="nav navbar-nav"
+    >
+      <li>
+        <Link
+          replace={false}
+          to="/"
+        >
+          Browse questions
+        </Link>
+      </li>
+      <li>
+        <Link
+          replace={false}
+          to="/create"
+        >
+          <b>
+            Create new questions
+          </b>
+        </Link>
+      </li>
+    </ul>
+    <ul
+      className="nav navbar-nav navbar-right"
+    >
+      <li>
+        <Link
+          replace={false}
+          to="/profile/me"
+        >
+          Logged in as ""
+        </Link>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`# Navbar 3`] = `
+<nav
+  className="navbar navbar-default"
+>
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="navbar-header"
+    >
+      <Link
+        className="navbar-brand"
+        replace={false}
+        to="/"
+      >
+        Brand
+      </Link>
+    </div>
+    <ul
+      className="nav navbar-nav"
+    >
+      <li>
+        <Link
+          replace={false}
+          to="/"
+        >
+          Browse questions
+        </Link>
+      </li>
+      <li>
+        <Link
+          replace={false}
+          to="/create"
+        >
+          Create new questions
+        </Link>
+      </li>
+    </ul>
+    <ul
+      className="nav navbar-nav navbar-right"
+    >
+      <li>
+        <Link
+          replace={false}
+          to="/profile/me"
+        >
+          <b>
+            Logged in as "test"
+          </b>
+        </Link>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;

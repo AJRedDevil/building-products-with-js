@@ -12,7 +12,7 @@ const mapDispatchToProps = dispatch => ({
   updateUser: payload => dispatch(updateUser(payload)),
 });
 
-const User = ({user, edit, updateUser}) => {
+export const User = ({user, edit, updateUser}) => {
   let userInput;
 
   const saveUser = () => updateUser({
@@ -24,7 +24,12 @@ const User = ({user, edit, updateUser}) => {
     <div className="panel panel-default" key={user.id}>
       <div className="panel-heading">
         User: {edit ? (
-          <input type="text" ref={(i) => { userInput = i; }} defaultValue={user.login} />
+          <input
+            type="text"
+            id="userInput"
+            ref={(i) => { userInput = i; }}
+            defaultValue={user.login}
+          />
         ) : user.login }
 
         {edit && (

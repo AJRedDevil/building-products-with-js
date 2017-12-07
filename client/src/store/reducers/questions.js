@@ -17,7 +17,13 @@ export const questions = (state = initalState, action) => {
       };
     // answer questions logic
     case ActionTypes.ANSWER_QUESTION_SUCCESS: {
-      const newQuestions = state.questions.map(q => (q.id === action.payload.id ? action.payload : q));
+      const newQuestions = state.questions.map(q =>
+        (
+          q.id === action.payload.id ? {
+            ...action.payload,
+            owner: JSON.parse(localStorage.getItem('user.data')),
+          } : q
+        ));
       return {...state, questions: newQuestions};
     }
     case ActionTypes.CREATE_QUESTION_SUCCESS: {

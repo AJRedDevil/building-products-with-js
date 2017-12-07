@@ -1,6 +1,7 @@
 // npm packages
 import {Observable} from 'rxjs/Observable';
 import {Action} from 'rxjs/scheduler/Action';
+import {last} from 'lodash';
 
 // our packages
 import * as ActionTypes from '../actionTypes';
@@ -40,8 +41,8 @@ export const answerQuestion = action$ => action$
         type: ActionTypes.ANSWER_QUESTION_SUCCESS,
         payload: question,
       },
-      Action.addNotification({
-        text: `Answer: "${payload.answer}" added to question: "${question.text}"`,
+      Actions.addNotification({
+        text: `Answer: "${last(question.answers).answer}" added to question: "${question.text}"`,
         alertType: 'info',
       }),
     ))

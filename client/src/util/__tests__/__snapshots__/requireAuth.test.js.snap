@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# PrivateRoute 1`] = `
+<Route
+  location={
+    Object {
+      "pathname": "jpt",
+    }
+  }
+  render={[Function]}
+/>
+`;
+
+exports[`# PrivateRoute 2`] = `
+<Route
+  location={
+    Object {
+      "pathname": "",
+    }
+  }
+  render={[Function]}
+/>
+`;

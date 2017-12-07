@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Question 1`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "canGo": [Function],
+      "createHref": [Function],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "testKey",
+          "pathname": "/",
+          "search": "",
+        },
+      ],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "index": 0,
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "testKey",
+        "pathname": "/",
+        "search": "",
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Question
+    deleteQuestion={[Function]}
+    onAnswer={[Function]}
+    question={
+      Object {
+        "answers": Array [
+          Object {
+            "answer": "Test answer",
+          },
+        ],
+        "owner": Object {
+          "id": 0,
+          "login": "test",
+        },
+        "text": "Question text",
+      }
+    }
+    updateQuestion={[Function]}
+    user={
+      Object {
+        "id": 0,
+        "login": "test",
+      }
+    }
+  />
+</Router>
+`;
+
+exports[`# QuestionWrapper 1`] = `
+<Question
+  deleteQuestion={[Function]}
+  onAnswer={[Function]}
+  question={
+    Object {
+      "answers": Array [
+        Object {
+          "answer": "Test answer",
+        },
+      ],
+      "owner": Object {
+        "id": 0,
+        "login": "test",
+      },
+      "text": "Question text",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+  updateQuestion={[Function]}
+  user={
+    Object {
+      "id": 0,
+      "login": "test",
+    }
+  }
+/>
+`;
