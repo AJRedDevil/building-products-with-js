@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   doCreateQuestion: payload => dispatch(createQuestion(payload)),
 });
 
-const Create = ({doCreateQuestion, user}) => {
+export const Create = ({doCreateQuestion, user}) => {
   let questionText;
   let questionDate;
 
