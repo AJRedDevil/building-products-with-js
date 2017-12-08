@@ -1,6 +1,5 @@
 // npm packages
 import {Observable} from 'rxjs/Observable';
-import {Action} from 'rxjs/scheduler/Action';
 import {last} from 'lodash';
 
 // our packages
