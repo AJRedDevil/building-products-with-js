@@ -2,7 +2,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import uuid from 'uuid';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
@@ -98,8 +97,9 @@ export class Question extends Component {
           </div>
         </div>
         <div className="panel-body">
-          {question.answers.length > 0 ? question.answers.map(answer => (
-            <ul className="list-group" key={uuid.v4()}>
+          {question.answers.length > 0 ? question.answers.map((answer, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <ul className="list-group" key={i}>
               <li className="list-group-item">{answer.answer}</li>
             </ul>
             )) : 'No answers yet'}

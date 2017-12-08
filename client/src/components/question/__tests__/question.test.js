@@ -14,6 +14,7 @@ const user = {
   login: 'test',
 };
 const question = {
+  id: '0',
   owner: user,
   text: 'Question text',
   answers: [{
@@ -37,24 +38,20 @@ test('# Question', () => {
   const deleteQuestion = q => expect(q).toBe(question);
   const updateQuestion = ({text}) => expect(text).toBe(updatedText);
   const component = (
-    <MemoryRouter
-      initialEntries={[{pathname: '/', key: 'testKey'}]}
-    >
-      <Question
-        user={user}
-        question={question}
-        onAnswer={onAnswer}
-        deleteQuestion={deleteQuestion}
-        updateQuestion={updateQuestion}
-      />
-    </MemoryRouter>
+    <Question
+      user={user}
+      question={question}
+      onAnswer={onAnswer}
+      deleteQuestion={deleteQuestion}
+      updateQuestion={updateQuestion}
+    />
   );
   // test rendering
   const wrapper = shallow(component);
   expect(wrapper).toMatchSnapshot();
 
   // test interaction
-  const app = mount(component);
+  const app = mount(<MemoryRouter initialEntries={[{pathname: '/', key: 'testKey'}]}>{component}</MemoryRouter>);
 
   // test answer
   // set answer

@@ -1,40 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`# Create page 1`] = `
-<Router
-  history={
-    Object {
-      "action": "POP",
-      "block": [Function],
-      "canGo": [Function],
-      "createHref": [Function],
-      "entries": Array [
-        Object {
-          "hash": "",
-          "key": "testKey",
-          "pathname": "/",
-          "search": "",
-        },
-      ],
-      "go": [Function],
-      "goBack": [Function],
-      "goForward": [Function],
-      "index": 0,
-      "length": 1,
-      "listen": [Function],
-      "location": Object {
-        "hash": "",
-        "key": "testKey",
-        "pathname": "/",
-        "search": "",
-      },
-      "push": [Function],
-      "replace": [Function],
-    }
-  }
->
-  <Create
-    doCreateQuestion={[Function]}
+<div>
+  <Navbar
+    current="/create"
     user={
       Object {
         "id": 0,
@@ -43,7 +12,48 @@ exports[`# Create page 1`] = `
       }
     }
   />
-</Router>
+  <div>
+    <form>
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="questionText"
+        >
+          Question text
+        </label>
+        <input
+          className="form-control"
+          id="questionText"
+          placeholder="Question text"
+          type="text"
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="expirationDate"
+        >
+          Expiration date
+        </label>
+        <input
+          className="form-control"
+          id="expirationDate"
+          placeholder="expirationDate"
+          type="date"
+        />
+      </div>
+      <button
+        className="btn btn-default"
+        onClick={[Function]}
+        type="submit"
+      >
+        Create a new question
+      </button>
+    </form>
+  </div>
+</div>
 `;
 
 exports[`# Create page wrapper 1`] = `

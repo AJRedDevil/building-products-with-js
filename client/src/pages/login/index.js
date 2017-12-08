@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   onLoginClick: params => dispatch(loginAction(params)),
 });
 
-const Login = ({
+export const Login = ({
   onLoginClick, token, navToHome,
 }) => {
   let usernameInput;
@@ -30,7 +30,7 @@ const Login = ({
     onLoginClick({
       login: usernameInput.value,
       password: passwordInput.value,
-      remember: rememberInput.checked === 'on',
+      remember: rememberInput.checked,
     });
   };
 

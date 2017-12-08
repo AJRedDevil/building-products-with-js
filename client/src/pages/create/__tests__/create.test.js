@@ -31,21 +31,17 @@ test('# Create page', () => {
   };
 
   const component = (
-    <MemoryRouter
-      initialEntries={[{pathname: '/', key: 'testKey'}]}
-    >
-      <Create
-        user={user}
-        doCreateQuestion={doCreateQuestion}
-      />
-    </MemoryRouter>
+    <Create
+      user={user}
+      doCreateQuestion={doCreateQuestion}
+    />
   );
   // test rendering
   const wrapper = shallow(component);
   expect(wrapper).toMatchSnapshot();
 
   // test user update
-  const app = mount(component);
+  const app = mount(<MemoryRouter initialEntries={[{pathname: '/', key: 'testKey'}]}>{component}</MemoryRouter>);
   // set new question text
   app.find('#questionText').getDOMNode().value = newText;
   // set new question expiration date

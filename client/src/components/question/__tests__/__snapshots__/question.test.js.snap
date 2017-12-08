@@ -1,64 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`# Question 1`] = `
-<Router
-  history={
-    Object {
-      "action": "POP",
-      "block": [Function],
-      "canGo": [Function],
-      "createHref": [Function],
-      "entries": Array [
-        Object {
-          "hash": "",
-          "key": "testKey",
-          "pathname": "/",
-          "search": "",
-        },
-      ],
-      "go": [Function],
-      "goBack": [Function],
-      "goForward": [Function],
-      "index": 0,
-      "length": 1,
-      "listen": [Function],
-      "location": Object {
-        "hash": "",
-        "key": "testKey",
-        "pathname": "/",
-        "search": "",
-      },
-      "push": [Function],
-      "replace": [Function],
-    }
-  }
+<div
+  className="panel panel-default"
 >
-  <Question
-    deleteQuestion={[Function]}
-    onAnswer={[Function]}
-    question={
-      Object {
-        "answers": Array [
-          Object {
-            "answer": "Test answer",
-          },
-        ],
-        "owner": Object {
-          "id": 0,
-          "login": "test",
-        },
-        "text": "Question text",
-      }
-    }
-    updateQuestion={[Function]}
-    user={
-      Object {
-        "id": 0,
-        "login": "test",
-      }
-    }
-  />
-</Router>
+  <div
+    className="panel-heading"
+  >
+    <span>
+      <button
+        className="btn btn-link"
+        id="deleteBtn"
+        onClick={[Function]}
+      >
+        <span
+          className="glyphicon glyphicon-trash"
+        />
+      </button>
+      <button
+        className="btn btn-link"
+        id="editBtn"
+        onClick={[Function]}
+      >
+        <span
+          className="glyphicon glyphicon-pencil"
+        />
+      </button>
+    </span>
+    Question text
+    <div
+      className="pull-right"
+    >
+      <Link
+        replace={false}
+        to="/profile/0"
+      >
+        test
+      </Link>
+    </div>
+  </div>
+  <div
+    className="panel-body"
+  >
+    <ul
+      className="list-group"
+      key="0"
+    >
+      <li
+        className="list-group-item"
+      >
+        Test answer
+      </li>
+    </ul>
+  </div>
+  <div
+    className="panel-footer"
+  >
+    <form
+      className="form-horizontal"
+    >
+      <div
+        className="col-sm-10"
+      >
+        <input
+          className="form-control"
+          id="answerInput"
+          placeholder="Enter your answer..."
+          type="text"
+        />
+      </div>
+      <button
+        className="btn btn-default"
+        id="answerBtn"
+        onClick={[Function]}
+        type="submit"
+      >
+        Answer
+      </button>
+    </form>
+  </div>
+</div>
 `;
 
 exports[`# QuestionWrapper 1`] = `
@@ -72,6 +93,7 @@ exports[`# QuestionWrapper 1`] = `
           "answer": "Test answer",
         },
       ],
+      "id": "0",
       "owner": Object {
         "id": 0,
         "login": "test",
