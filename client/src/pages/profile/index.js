@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   getUser: payload => dispatch(getUser(payload)),
 });
 
-class Profile extends Component {
+export class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {};
