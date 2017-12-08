@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-const Register = ({
+export const Register = ({
   onRegisterClick, navToLogin, redirectToLogin,
 }) => {
   let usernameInput;

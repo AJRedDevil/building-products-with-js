@@ -1,6 +1,5 @@
 // npm packages
 import React from 'react';
-import {MemoryRouter} from 'react-router';
 import configureMockStore from 'redux-mock-store';
 
 // our packages

@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Register page 1`] = `
+<div
+  className="jumbotron"
+>
+  <h2>
+    Experts portal:
+  </h2>
+  <p>
+    Please register. Or 
+    <Link
+      replace={false}
+      to="/login"
+    >
+      login
+    </Link>
+  </p>
+  <form>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="inputUsername"
+      >
+        Username:
+      </label>
+      <input
+        className="form-control"
+        id="inputUsername"
+        placeholder="Username"
+        type="text"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="inputPassword"
+      >
+        Password
+      </label>
+      <input
+        className="form-control"
+        id="inputPassword"
+        placeholder="Password"
+        type="password"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="inputPasswordRepeat"
+      >
+        Password
+      </label>
+      <input
+        className="form-control"
+        id="inputPasswordRepeat"
+        placeholder="RepeatPassword"
+        type="password"
+      />
+    </div>
+    <button
+      className="btn btn-default"
+      onClick={[Function]}
+      type="submit"
+    >
+      Register
+    </button>
+  </form>
+</div>
+`;
+
+exports[`# Register page wrapper 1`] = `
+<Register
+  navToLogin={[Function]}
+  onRegisterClick={[Function]}
+  redirectToLogin={true}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+/>
+`;
