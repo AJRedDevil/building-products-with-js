@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 // our packages
 import Navbar from '../../components/navbar';
 import {getAllQuestions, answerQuestion} from '../../store/actions';
+// eslint-disable-next-line import/no-named-as-default
 import Question from '../../components/question';
 import {MyPropType} from '../../util';
 
@@ -21,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
   doAnswer: payload => dispatch(answerQuestion(payload)),
 });
 
-const Home = ({
+export const Home = ({
   fetchQuestions, doAnswer, questions, user,
 }) => {
   fetchQuestions();

@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Home page 1`] = `
+<div>
+  <Navbar
+    current="/"
+    user={
+      Object {
+        "id": 0,
+        "login": "test",
+        "registrationDate": "2017-01-31T19:16:01.000Z",
+      }
+    }
+  />
+  <div>
+    <Connect(Question)
+      key="0"
+      onAnswer={[Function]}
+      question={
+        Object {
+          "answers": Array [
+            Object {
+              "answer": "Test answer",
+            },
+          ],
+          "id": 0,
+          "owner": Object {
+            "id": 0,
+            "login": "test",
+            "registrationDate": "2017-01-31T19:16:01.000Z",
+          },
+          "text": "Question text",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`# Home page wrapper 1`] = `
+<Home
+  doAnswer={[Function]}
+  fetchQuestions={[Function]}
+  questions={
+    Array [
+      Object {
+        "answers": Array [],
+        "creationDate": "",
+        "expirationDate": "",
+        "id": "",
+        "owner": Object {
+          "id": "",
+          "login": "",
+          "registrationDate": "",
+        },
+        "text": "",
+      },
+    ]
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+  user={
+    Object {
+      "id": 0,
+      "login": "test",
+      "registrationDate": "2017-01-31T19:16:01.000Z",
+    }
+  }
+/>
+`;
