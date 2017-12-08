@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node serve.js",
-    "test": "jest",
+    "test": "eslint src/ && jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
     "test:update": "jest --updateSnapshot"
