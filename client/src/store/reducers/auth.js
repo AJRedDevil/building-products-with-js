@@ -8,7 +8,7 @@ try {
   user = JSON.parse(storedUser);
 } catch (e) {
   /* eslint-disable no-console */
-  console.error('Error parsing user data', e);
+  // console.error('Error parsing user data', e);
   /* eslint-enable no-console */
 }
 
