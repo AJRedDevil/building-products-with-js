@@ -38,19 +38,18 @@ export const login = action$ => action$
         alertType: 'info',
       }),
     ))
-    .catch(err => Observable.merge(
-      Observable.of(
-        {
-          type: ActionTypes.LOGIN_ERROR,
-          payload: {
-            error: err,
-          },
+    .catch(err => Observable.merge(Observable.of(
+      {
+        type: ActionTypes.LOGIN_ERROR,
+        payload: {
+          error: err,
         },
-        Actions.addNotification({
-          text: loginErrorToMessage(err),
-          alertType: 'danger',
-        }),
-      ))));
+      },
+      Actions.addNotification({
+        text: loginErrorToMessage(err),
+        alertType: 'danger',
+      }),
+    ))));
 
 // Similar to login
 export const register = action$ => action$
@@ -68,16 +67,15 @@ export const register = action$ => action$
         alertType: 'info',
       }),
     ))
-    .catch(err => Observable.merge(
-      Observable.of(
-        {
-          type: ActionTypes.REGISTER_ERROR,
-          payload: {
-            error: err,
-          },
+    .catch(err => Observable.merge(Observable.of(
+      {
+        type: ActionTypes.REGISTER_ERROR,
+        payload: {
+          error: err,
         },
-        Actions.addNotification({
-          text: registerErrorToMessage(err),
-          alertType: 'danger',
-        }),
-      ))));
+      },
+      Actions.addNotification({
+        text: registerErrorToMessage(err),
+        alertType: 'danger',
+      }),
+    ))));
