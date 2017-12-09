@@ -14,7 +14,7 @@ afterEach(() => {
   Observable.ajax.post = oldPost;
 });
 
-test('# login epic - success', () => {
+test('# login epic - success', (done) => {
   const payload = {test: true};
   const response = {data: true};
   const input = {type: ActionTypes.DO_LOGIN, payload};
@@ -36,33 +36,32 @@ test('# login epic - success', () => {
         type: ActionTypes.ADD_NOTIFICATION,
         payload: {id: 0, text: 'Login success', alertType: 'info'},
       });
+      done();
     }
   });
 });
 
-test('# login epic - error', () => {
+test('# login epic - error', (done) => {
   const input = {type: ActionTypes.DO_LOGIN, payload: {}};
   const input$ = ActionsObservable.from([input]);
-
-  const post = jest.fn().mockReturnValueOnce(Observable.throw({message: 'ajax error'}));
-  Observable.ajax.post = post;
 
   let responseCount = 0;
   login(input$).subscribe((res) => {
     if (responseCount === 0) {
       expect(res.type).toBe(ActionTypes.LOGIN_ERROR);
-      expect(res.payload.error.message).toBe('ajax error');
+      expect(res.payload.error.message).toBe('ajax error 0');
       responseCount += 1;
     } else {
       expect(res).toEqual({
         type: ActionTypes.ADD_NOTIFICATION,
-        payload: {id: 1, text: 'ajax error', alertType: 'danger'},
+        payload: {id: 1, text: 'ajax error 0', alertType: 'danger'},
       });
     }
+    done();
   });
 });
 
-test('# register epic - success', () => {
+test('# register epic - success', (done) => {
   const payload = {test: true};
   const response = {data: true};
   const input = {type: ActionTypes.DO_REGISTER, payload};
@@ -85,27 +84,26 @@ test('# register epic - success', () => {
         payload: {id: 2, text: 'Register success', alertType: 'info'},
       });
     }
+    done();
   });
 });
 
-test('# register epic - error', () => {
+test('# register epic - error', (done) => {
   const input = {type: ActionTypes.DO_REGISTER, payload: {}};
   const input$ = ActionsObservable.from([input]);
-
-  const post = jest.fn().mockReturnValueOnce(Observable.throw({xhr: {response: ''}, message: 'ajax error'}));
-  Observable.ajax.post = post;
 
   let responseCount = 0;
   register(input$).subscribe((res) => {
     if (responseCount === 0) {
       expect(res.type).toBe(ActionTypes.REGISTER_ERROR);
-      expect(res.payload.error.message).toBe('ajax error');
+      expect(res.payload.error.message).toBe('ajax error 0');
       responseCount += 1;
     } else {
       expect(res).toEqual({
         type: ActionTypes.ADD_NOTIFICATION,
-        payload: {id: 3, text: 'ajax error', alertType: 'danger'},
+        payload: {id: 3, text: 'ajax error 0', alertType: 'danger'},
       });
     }
+    done();
   });
 });
