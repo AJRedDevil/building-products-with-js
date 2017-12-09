@@ -18,7 +18,7 @@ export const getAllQuestions = action$ => action$
       type: ActionTypes.GET_ALL_QUESTIONS_SUCCESS,
       payload: {questions},
     }))
-    .catch(error => Observable.of(
+    .catch(error => Observable.merge(Observable.of(
       {
         type: ActionTypes.GET_ALL_QUESTIONS_ERROR,
         payload: {error},
@@ -27,7 +27,7 @@ export const getAllQuestions = action$ => action$
         text: `[get all questions] Error: ${ajaxErrorToMessage(error)}`,
         alertType: 'danger',
       }),
-    )));
+    ))));
 
 export const answerQuestion = action$ => action$
   .ofType(ActionTypes.ANSWER_QUESTION)
@@ -45,16 +45,16 @@ export const answerQuestion = action$ => action$
         alertType: 'info',
       }),
     ))
-    .catch(error => Observable.of(
+    .catch(error => Observable.merge(Observable.of(
       {
         type: ActionTypes.ANSWER_QUESTION_ERROR,
         payload: {error},
       },
       Actions.addNotification({
-        text: `[answer create] Error: ${ajaxErrorToMessage(error)}`,
+        text: `[answer question] Error: ${ajaxErrorToMessage(error)}`,
         alertType: 'danger',
       }),
-    )));
+    ))));
 
 export const createQuestion = action$ => action$
   .ofType(ActionTypes.CREATE_QUESTION)
@@ -99,16 +99,16 @@ export const deleteQuestion = action$ => action$
         alertType: 'info',
       }),
     ))
-    .catch(error => Observable.of(
+    .catch(error => Observable.merge(Observable.of(
       {
         type: ActionTypes.DELETE_QUESTION_ERROR,
         payload: {error},
       },
       Actions.addNotification({
-        text: `[delete create] Error: ${ajaxErrorToMessage(error)}`,
+        text: `[delete question] Error: ${ajaxErrorToMessage(error)}`,
         alertType: 'danger',
       }),
-    )));
+    ))));
 
 export const updateQuestion = action$ => action$
   .ofType(ActionTypes.UPDATE_QUESTION)
@@ -122,17 +122,17 @@ export const updateQuestion = action$ => action$
         payload: question,
       },
       Actions.addNotification({
-        text: `Question with text "${payload.text}" updated to "${question.text}"`,
+        text: `Question updated to "${question.text}"`,
         alertType: 'info',
       }),
     ))
-    .catch(error => Observable.of(
+    .catch(error => Observable.merge(Observable.of(
       {
         type: ActionTypes.UPDATE_QUESTION_ERROR,
         payload: {error},
       },
       Actions.addNotification({
-        text: `[update create] Error: ${ajaxErrorToMessage(error)}`,
+        text: `[update question] Error: ${ajaxErrorToMessage(error)}`,
         alertType: 'danger',
       }),
-    )));
+    ))));
