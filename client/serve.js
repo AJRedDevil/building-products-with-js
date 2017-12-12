@@ -5,10 +5,31 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackMiddlware = require('webpack-dev-middleware');
 const webpackHotMiddlware = require('webpack-hot-middleware');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const config = require('./webpack.config');
 
 // create express
 const app = express();
+
+// get the environment
+const isProduction = process.env.NODE_ENV === 'production';
+
+// setup plugins hot reload
+config.plugins = [
+  // define plugin for node env
+  new webpack.DefinePlugin({
+    'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV)},
+  }),
+];
+
+// if not in prod - setup hot reload
+if (!isProduction) {
+  // hot reload plugin
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  // setup no errors plugin
+  config.plugins.push(new webpack.NoEmitOnErrorsPlugin());
+}
 
 // define plugin for nod env
 config.plugins.push(new webpack.DefinePlugin({
@@ -18,11 +39,48 @@ config.plugins.push(new webpack.DefinePlugin({
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 // setup no errors plugin
 config.plugins.push(new webpack.NoEmitOnErrorsPlugin());
-// override entry for hotload
-config.entry = [
-  'webpack-hot-middleware/client',
-  config.entry,
-];
+
+// override entry for hot reload
+if (!isProduction) {
+  config.entry = [
+    'webpack-hot-middleware/client',
+    config.entry,
+  ];
+}
+
+// tweak conig for production
+if (isProduction) {
+  // set devtoo to cheap source map
+  config.devtool = 'cheap-source-map';
+
+  // extract styles into file
+  const extractCSS = new ExtractTextPlugin('main.css');
+  config.plugins.push(extractCSS);
+  config.module.rules[0].use = ExtractTextPlugin.extract({ // eslint-disable-line
+    fallback: 'style-loader',
+    use: [{
+      loader: 'css-loader',
+      options: {
+        modules: true,
+        minimize: true,
+      },
+    }],
+  });
+  config.module.rules[1].use = ExtractTextPlugin.extract({ // eslint-disable-line
+    fallback: 'style-loader',
+    use: [{
+      loader: 'css-loader',
+      options: {
+        minimize: true,
+      },
+    }],
+  });
+
+  // add js optimization plugins
+  config.plugins.push(new webpack.LoaderOptionsPlugin({minimize: true}));
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
 // returns a Compiler instance
 const compiler = webpack(config);
 // stats output config
@@ -39,7 +97,11 @@ app.use(webpackMiddlware(compiler, {
   contentBase: 'src',
   stats: statsConf,
 }));
-app.use(webpackHotMiddlware(compiler));
+
+// add hot reload middleware if not in production
+if (!isProduction) {
+  app.use(webpackHotMiddlware(compiler));
+}
 
 // serve static
 app.use(express.static(__dirname));

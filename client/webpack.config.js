@@ -15,63 +15,97 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'app.min.js',
   },
+  resolve: {
+    modules: [path.resolve(__dirname), 'node_modules'],
+  },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader?modules',
-        ],
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+          },
+        }],
         exclude: /node_modules/,
       }, {
         test: /node_modules\/.+\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ],
+        use: [{loader: 'style-loader'}, {loader: 'css-loader'}],
       }, {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            query: {
-              cacheDirectory: true,
-              presets: ['env', 'react', 'stage-0'],
-              plugins: ['transform-runtime'],
-              env: {
-                development: {
-                  presets: ['react-hmre'],
-                },
-                production: {
-                  presets: ['react-optimize'],
-                },
+        use: [{
+          loader: 'babel-loader',
+          query: {
+            cacheDirectory: true,
+            presets: ['env', 'react', 'stage-0'],
+            plugins: ['lodash', 'transform-runtime'],
+            env: {
+              development: {
+                presets: ['react-hmre'],
+              },
+              production: {
+                presets: ['react-optimize'],
               },
             },
           },
-        ],
-      }, {
-        test: /\.json$/,
-        loader: 'json',
+        }],
       }, {
         test: /\.woff\d?(\?.+)?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/font-woff',
+          },
+        }],
       }, {
         test: /\.ttf(\?.+)?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/octed-stream',
+          },
+        }],
       }, {
         test: /\.eot(\?.+)?$/,
-        loader: 'url-loader?limit=10000',
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+          },
+        }],
       }, {
         test: /\.svg(\?.+)?$/,
-        loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'image/svg+xml',
+          },
+        }],
       }, {
         test: /\.png$/,
-        loader: 'url-loader?limit=10000&mimetype=image/png',
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/image/png',
+          },
+        }],
       }, {
         test: /\.gif$/,
-        loader: 'url-loader?limit=10000&mimetype=image/gif',
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/image/gif',
+          },
+        }],
       },
     ],
   },
