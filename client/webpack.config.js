@@ -42,7 +42,7 @@ module.exports = {
           query: {
             cacheDirectory: true,
             presets: ['env', 'react', 'stage-0'],
-            plugins: ['lodash', 'transform-runtime'],
+            plugins: ['transform-runtime', 'lodash'],
             env: {
               development: {
                 presets: ['react-hmre'],

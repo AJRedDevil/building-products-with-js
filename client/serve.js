@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const webpackMiddlware = require('webpack-dev-middleware');
 const webpackHotMiddlware = require('webpack-hot-middleware');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const config = require('./webpack.config');
 
@@ -79,6 +80,7 @@ if (isProduction) {
   // add js optimization plugins
   config.plugins.push(new webpack.LoaderOptionsPlugin({minimize: true}));
   config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+  config.plugins.push(new LodashModuleReplacementPlugin());
 }
 
 // returns a Compiler instance
