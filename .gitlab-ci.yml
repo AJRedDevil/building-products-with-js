@@ -25,7 +25,7 @@ build-server:
 build-client:
   stage: build
   script:
-    - docker build --pull -t $CLIENT_TEST_IMAGE ./server
+    - docker build --pull -t $CLIENT_TEST_IMAGE ./client
     - docker push $CLIENT_TEST_IMAGE
 
 test-server:
