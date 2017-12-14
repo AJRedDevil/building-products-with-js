@@ -51,8 +51,8 @@ if (!isProduction) {
 
 // tweak conig for production
 if (isProduction) {
-  // set devtoo to cheap source map
-  config.devtool = 'cheap-source-map';
+  // set devtool to source map
+  config.devtool = 'source-map';
 
   // extract styles into file
   const extractCSS = new ExtractTextPlugin('main.css');
@@ -94,15 +94,23 @@ const statsConf = {
   chunkModules: false,
   modules: false,
 };
-app.use(webpackMiddlware(compiler, {
-  publicPath: config.output.publicPath,
-  contentBase: 'src',
-  stats: statsConf,
-}));
 
 // add hot reload middleware if not in production
 if (!isProduction) {
+  app.use(webpackMiddlware(compiler, {
+    publicPath: config.output.publicPath,
+    contentBase: 'src',
+    stats: statsConf,
+  }));
   app.use(webpackHotMiddlware(compiler));
+} else {
+  compiler.run((err, stats) => {
+    if (err) {
+      console.error('Erro compiling with webpack:', err);
+      process.exit(1);
+    }
+    console.log(stats.toString(statsConf));
+  });
 }
 
 // serve static
