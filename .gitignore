@@ -6,3 +6,4 @@ yarn-error.log
 client/dist/
 coverage/
 .vscode
+deploy/db
