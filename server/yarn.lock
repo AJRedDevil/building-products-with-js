@@ -2409,9 +2409,9 @@ moment@2.10.3:
   version "2.10.3"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.10.3.tgz#0abb99f307f65218308c6935efe29c57b1a0a27f"
 
-moment@2.x.x, moment@^2.29.2:
-  version "2.29.2"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.2.tgz#00910c60b20843bcba52d37d58c628b47b1f20e4"
+moment@2.x.x, moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
 
 morgan@^1.9.1:
   version "1.9.1"
